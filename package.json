@@ -4,8 +4,8 @@
   "description": "Webpack template with basic features",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --mode=production",
-    "watch": "webpack --mode=development && webpack-dev-server"
+    "build": "start http://localhost:8080/ & webpack",
+    "watch": "start http://localhost:8080/ & webpack --mode=development && webpack-dev-server"
   },
   "keywords": [],
   "author": "Boris Nekezov",

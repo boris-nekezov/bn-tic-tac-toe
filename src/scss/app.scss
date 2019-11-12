@@ -1,3 +1,37 @@
 @import './src/general.scss';
 
+$ticTacToeSize: 300px;
+$ticTacToeBtnSize: $ticTacToeSize / 3;
+
+.tic-tac-toe {
+    margin-top: 20px;
+}
+
+.tic-tac-toe__title {
+    margin-bottom: 20px;
+}
+
+.tic-tac-toe__buttons-holder {
+    display: flex;
+    justify-content: center;
+}
+
+.tic-tac-toe__buttons {
+    display: flex;
+    flex-flow: row wrap;
+    width: $ticTacToeSize;
+    height: $ticTacToeSize;
+    background: pink;
+}
+
+.tic-tac-toe__button {
+    box-sizing: border-box;
+    border-radius: 0;
+    padding: 0;
+    flex-basis: $ticTacToeBtnSize;
+    height: $ticTacToeBtnSize;
+    user-select: none;
+    outline: none;
+}
+
 
