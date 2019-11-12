@@ -18,12 +18,13 @@
  *  */ 
 
 import SETTINGS  from './src/SETTINGS';
-const { isGameStarted, isPlayerOne } = SETTINGS;
+let { isGameStarted, isPlayerOne } = SETTINGS;
 // console.log(isPlayerOne, 'xx');
 const playMove = (btn) => {
     console.log('click', isPlayerOne, btn);
     const symbol = isPlayerOne ? "X" : "O";
     btn.toElement.textContent = symbol;
+    isPlayerOne = !isPlayerOne;
 }
 
 const App = () => {
