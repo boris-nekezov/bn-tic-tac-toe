@@ -18,10 +18,22 @@
  *  */ 
 
 import SETTINGS  from './src/SETTINGS';
-const { isGameStarted, playerOne, playerTwo } = SETTINGS;
+const { isGameStarted, isPlayerOne } = SETTINGS;
+// console.log(isPlayerOne, 'xx');
+const playMove = (btn) => {
+    console.log('click', isPlayerOne, btn);
+    const symbol = isPlayerOne ? "X" : "O";
+    btn.toElement.textContent = symbol;
+}
 
 const App = () => {
-    console.log(isGameStarted, playerOne, playerTwo);
+    const buttons = document.querySelectorAll('.tic-tac-toe__button');
+    console.log(buttons);
+    // buttons.addEventListener('click', playMove)
+    [...buttons].map((button) => {
+        // console.log(button);
+        button.addEventListener('click', playMove);
+    });
 }
 
 export default App;
