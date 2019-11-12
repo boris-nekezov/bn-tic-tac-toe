@@ -1,4 +1,9 @@
 /** Tic Tac Toa for 2 players
+ * button "New Game" when it clicks it it load the playground
+ * 
+ * player one is active
+ * 
+ * when play one clicks the button call checkWin() and if there is no wind we switch to player two
  * 
  * Plan: 
  * button have pos-x and pos-y data attribute
@@ -12,10 +17,11 @@
  * in the matrix, then we check if we have 3 in a row
  *  */ 
 
-import { helloWorld } from './src/hello-world';
+import SETTINGS  from './src/SETTINGS';
+const { isGameStarted, playerOne, playerTwo } = SETTINGS;
 
 const App = () => {
-    console.log(helloWorld());
+    console.log(isGameStarted, playerOne, playerTwo);
 }
 
 export default App;
