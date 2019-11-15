@@ -1,3 +1,4 @@
+@import './src/bootstrap-overrides.scss';
 @import './src/general.scss';
 
 $ticTacToeSize: 300px;
@@ -32,7 +33,7 @@ $ticTacToeBtnSize: $ticTacToeSize / 3;
     height: $ticTacToeBtnSize;
     user-select: none;
     outline: none;
-    font: 400 50px Arial
+    font: 400 70px Arial;
 }
 
 

@@ -1,6 +1,9 @@
 const SETTINGS = {
-    isGameStarted: false,
-    isPlayerOne: true
+    isPlayerOne: true,
+    matrix: [],
+    matrixSize: 3,
+    p1s: "X",
+    p2s: "O"
 }
 
 export default SETTINGS;
