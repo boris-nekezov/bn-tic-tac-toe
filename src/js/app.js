@@ -25,8 +25,6 @@ const resetGame = () => {
 
 const startGame = () => {
     resetGame();
-    isGameStarted = true;
-
     createMatrix();
 }
 
@@ -49,10 +47,36 @@ const fillMatrix = (x, y, symbol) => {
  
 }
 
+const checkRows = (m, l, x, y, s) => {
+    let row1set = 0;
+    m.map((val, i) => {
+        m.map((val2, j) => {
+            // console.log(`m[i][j]${m[i][j]}`);
+            console.log(`x: ${x} i: ${i} y: ${y} j: ${j} s: ${s} m[x][y] ${m[x][y]}`);
+            
+            if (x == i && m[i][j] == s) {
+                row1set++;
+                console.log(`row1set`, row1set);
+            }
+        });
+     
+    });
+    if (row1set === l) {
+        console.log('win roowww!');
+        return true;
+    }
+} 
 const checkWin = (isPlayerOne,  x, y, s) => {    
     const m = matrix;
+    const l = m.length;
+  
+    if (checkRows(m,l, x, y, s)) {
+        return true;
+    }
 
-    const isRow1Win = m[0][0] == s && m[0][1] == s && m[0][2] == s ? true : false;
+    const isRow1Win = m[0][0] == s && 
+                    m[0][1] == s && 
+                    m[0][2] == s ? true : false;
     const isRow2Win = m[1][0] == s && m[1][1] == s && m[1][2] == s ? true : false;
     const isRow3Win = m[2][0] == s && m[2][1] == s && m[2][2] == s ? true : false;
     
@@ -64,7 +88,7 @@ const checkWin = (isPlayerOne,  x, y, s) => {
     const isDiag2Win = m[0][2] == s && m[1][1] == s && m[2][0] == s ? true : false;
 
     if (
-        isRow1Win || isRow2Win || isRow3Win || 
+        // isRow1Win || isRow2Win || isRow3Win || 
         isCow1Win || isCow2Win || isCow3Win ||
         isDiag1Win || isDiag2Win 
     ) {
