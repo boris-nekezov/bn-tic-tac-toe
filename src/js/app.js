@@ -3,6 +3,9 @@
  *  */ 
 
 import SETTINGS  from './src/SETTINGS';
+// handlers
+import createMatrix from "./src/handlers/createMatrix";
+import resetGame from "./src/handlers/resetGame";
 
 const buttons = document.querySelectorAll('.tic-tac-toe__button');
 
@@ -14,28 +17,9 @@ let {
     p2s
 } = SETTINGS;
 
-const resetGame = () => {
-    matrix = [];
-    isPlayerOne = true;
-    [...buttons].map(button => {
-        button.textContent = ''
-        button.removeAttribute('disabled');
-    });
-}
-
 const startGame = () => {
-    resetGame();
-    createMatrix();
-}
-
-const createMatrix = () => {
-    for (let i = 0; i < matrixSize; i++) {
-        matrix.push([]);
-        for (let j = 0; j < matrixSize; j++) {
-            matrix[i].push('');
-        }    
-      
-    }
+  matrix = resetGame(matrix, isPlayerOne, buttons);
+  createMatrix(matrix, matrixSize);
 }
 
 const setSymbol = (isPlayerOne) => {
@@ -88,7 +72,7 @@ const checkWin = (isPlayerOne,  x, y, s) => {
     const isDiag2Win = m[0][2] == s && m[1][1] == s && m[2][0] == s ? true : false;
 
     if (
-        // isRow1Win || isRow2Win || isRow3Win || 
+        isRow1Win || isRow2Win || isRow3Win ||
         isCow1Win || isCow2Win || isCow3Win ||
         isDiag1Win || isDiag2Win 
     ) {
