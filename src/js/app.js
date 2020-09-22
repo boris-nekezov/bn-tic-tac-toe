@@ -20,36 +20,36 @@ let {
 const startGame = () => {
   matrix = resetGame(matrix, isPlayerOne, buttons);
   createMatrix(matrix, matrixSize);
-}
+};
 
 const setSymbol = (isPlayerOne) => {
     return isPlayerOne ? p1s : p2s;
-}
+};
 
 const fillMatrix = (x, y, symbol) => {
     matrix[x][y] = symbol;
- 
-}
+};
 
 const checkRows = (m, l, x, y, s) => {
     let row1set = 0;
     m.map((val, i) => {
         m.map((val2, j) => {
             // console.log(`m[i][j]${m[i][j]}`);
-            console.log(`x: ${x} i: ${i} y: ${y} j: ${j} s: ${s} m[x][y] ${m[x][y]}`);
+            // console.log(`x: ${x} i: ${i} y: ${y} j: ${j} s: ${s} m[x][y] ${m[x][y]}`);
             
             if (x == i && m[i][j] == s) {
                 row1set++;
-                console.log(`row1set`, row1set);
+                // console.log(`row1set`, row1set);
             }
         });
      
     });
     if (row1set === l) {
-        console.log('win roowww!');
+        // console.log('win roowww!');
         return true;
     }
-} 
+};
+
 const checkWin = (isPlayerOne,  x, y, s) => {    
     const m = matrix;
     const l = m.length;
@@ -78,11 +78,12 @@ const checkWin = (isPlayerOne,  x, y, s) => {
     ) {
         return true;
     } 
-}
+};
 
 const playMove = (event) => {
     const symbol = setSymbol(isPlayerOne);
-    const btn = event.toElement;
+    const btn = event.target;
+
     btn.textContent = symbol;
     btn.setAttribute('disabled', 'disabled');
      
@@ -101,7 +102,7 @@ const playMove = (event) => {
     
     isPlayerOne = !isPlayerOne;
     
-}
+};
 
 const App = () => {
     startGame();   
