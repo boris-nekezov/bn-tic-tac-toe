@@ -28,7 +28,7 @@ npm run build
 yarn build
 ```
 
-### Run `watch` develompent mode
+### Run `watch` development mode
 
 ```sh
 # npm
