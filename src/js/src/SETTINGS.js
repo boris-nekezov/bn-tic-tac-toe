@@ -2,8 +2,8 @@ const SETTINGS = {
     isPlayerOne: true,
     matrix: [],
     matrixSize: 3,
-    p1s: "X",
-    p2s: "O"
+    playerOneSymbol: "X",
+    playerTwoSymbol: "O"
 }
 
 export default SETTINGS;
