@@ -1,7 +1,6 @@
-const resetGame = (matrix, isPlayerOne, buttons) => {
+const resetGame = (matrix, buttons) => {
   console.log(`[RESET GAME]`);
   matrix = [];
-    isPlayerOne = true;
     [...buttons].map(button => {
         button.textContent = ''
         button.removeAttribute('disabled');
