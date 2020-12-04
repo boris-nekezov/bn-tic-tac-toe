@@ -1,0 +1,10 @@
+// colors
+$color-white: #fff;
+$color-black: #000;
+$color-green: #379337;
+$color-green-light: lighten($color-green, 20%);
+$color-green-dark: darken($color-green, 20%);
+
+// size
+$ticTacToeSize: 300px;
+$ticTacToeBtnSize: $ticTacToeSize / 3;

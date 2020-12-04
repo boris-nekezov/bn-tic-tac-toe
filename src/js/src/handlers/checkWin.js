@@ -1,6 +1,6 @@
 const checkWin = (matrix, btnContent) => {
 	console.log(`[CHECK WIN]`);
-	console.log(matrix, btnContent);
+	// console.log(matrix, btnContent);
 
 	// row wins
 	const isRow1Win =
@@ -57,15 +57,41 @@ const checkWin = (matrix, btnContent) => {
 			: false;
 
 	if (
-		isRow1Win ||
-		isRow2Win ||
-		isRow3Win ||
+		// isRow1Win ||
+		// isRow2Win ||
+		// isRow3Win ||
 		isCow1Win ||
 		isCow2Win ||
 		isCow3Win ||
 		isDiag1Win ||
 		isDiag2Win
 	) {
+		return true;
+	}
+
+	const winLine = document.querySelector('.tic-tac-toe__win-line');
+	if (isRow1Win) {
+		console.log('[isRow1Win]');
+		winLine.classList.add(
+			'tic-tac-toe__win-line--win-row-1',
+			'tic-tac-toe__win-line--active'
+		);
+		return true;
+	}
+
+	if (isRow2Win) {
+		winLine.classList.add(
+			'tic-tac-toe__win-line--win-row-2',
+			'tic-tac-toe__win-line--active'
+		);
+		return true;
+	}
+
+	if (isRow3Win) {
+		winLine.classList.add(
+			'tic-tac-toe__win-line--win-row-3',
+			'tic-tac-toe__win-line--active'
+		);
 		return true;
 	}
 };

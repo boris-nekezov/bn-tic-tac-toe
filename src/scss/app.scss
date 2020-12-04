@@ -1,39 +1,65 @@
+@import './src/variables.scss';
 @import './src/bootstrap-overrides.scss';
 @import './src/general.scss';
 
-$ticTacToeSize: 300px;
-$ticTacToeBtnSize: $ticTacToeSize / 3;
-
 .tic-tac-toe {
-    margin-top: 20px;
+	margin-top: 20px;
 }
 
 .tic-tac-toe__title {
-    margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 
 .tic-tac-toe__buttons-holder {
-    display: flex;
-    justify-content: center;
+	display: flex;
+	justify-content: center;
 }
 
 .tic-tac-toe__buttons {
-    display: flex;
-    flex-flow: row wrap;
-    width: $ticTacToeSize;
-    height: $ticTacToeSize;
-    background: pink;
+	position: relative;
+	display: flex;
+	flex-flow: row wrap;
+	width: $ticTacToeSize;
+	height: $ticTacToeSize;
+}
+
+.tic-tac-toe__win-line {
+	position: absolute;
+	width: 0;
+	height: 8px;
+	opacity: 0;
+	background: $color-white;
+}
+
+.tic-tac-toe__win-line--active {
+	width: 90%;
+	opacity: 1;
+	background: $color-white;
+	transition: opacity 0.2s linear, width 0.2s linear;
+}
+
+.tic-tac-toe__win-line--win-row-1 {
+	top: 15%;
+	left: 5%;
+}
+
+.tic-tac-toe__win-line--win-row-2 {
+	top: 48%;
+	left: 5%;
+}
+
+.tic-tac-toe__win-line--win-row-3 {
+	top: 82%;
+	left: 5%;
 }
 
 .tic-tac-toe__button {
-    box-sizing: border-box;
-    border-radius: 0;
-    padding: 0;
-    flex-basis: $ticTacToeBtnSize;
-    height: $ticTacToeBtnSize;
-    user-select: none;
-    outline: none;
-    font: 400 70px Arial;
+	box-sizing: border-box;
+	border-radius: 0;
+	padding: 0;
+	flex-basis: $ticTacToeBtnSize;
+	height: $ticTacToeBtnSize;
+	user-select: none;
+	outline: none;
+	font: 400 70px Arial;
 }
-
-

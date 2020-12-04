@@ -1,5 +1,11 @@
-.btn-success.disabled, .btn-success:disabled {
-    color: #fff;
-    background-image: linear-gradient(#379337, #3b9e3b 40%, #3ea63e);
-    opacity: 1;
+.btn-success.disabled,
+.btn-success:disabled {
+	color: $color-white;
+	// background-image: linear-gradient(#379337, #3b9e3b 40%, #3ea63e);
+	background-image: linear-gradient(
+		$color-green,
+		$color-green-light 40%,
+		$color-green-dark
+	);
+	opacity: 1;
 }
