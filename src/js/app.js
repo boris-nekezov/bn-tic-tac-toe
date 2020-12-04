@@ -1,71 +1,69 @@
 /** Tic Tac Toa for 2 players
  * button "New Game" when it clicks it it load the playground
- *  */ 
+ *  */
 
-import SETTINGS  from './src/SETTINGS';
+import SETTINGS from './src/SETTINGS';
 // handlers
-import createMatrix from "./src/handlers/createMatrix";
-import resetGame from "./src/handlers/resetGame";
-import checkWin from "./src/handlers/checkWin";
+import createMatrix from './src/handlers/createMatrix';
+import resetGame from './src/handlers/resetGame';
+import checkWin from './src/handlers/checkWin';
 
 const buttons = document.querySelectorAll('.tic-tac-toe__button');
 
-let {   
-    isPlayerOne, 
-    matrix,
-    matrixSize ,
-    playerOneSymbol,
-    playerTwoSymbol
+let {
+	isPlayerOne,
+	matrix,
+	matrixSize,
+	playerOneSymbol,
+	playerTwoSymbol,
 } = SETTINGS;
 
 const startGame = () => {
-    isPlayerOne = true;
-    matrix = resetGame(matrix, buttons);
-    createMatrix(matrix, matrixSize);
+	isPlayerOne = true;
+	// console.log('resetGame(matrix, buttons)', resetGame(matrix, buttons));
+	matrix = resetGame(matrix, buttons);
+	console.log('startGame matrix', matrix);
+	createMatrix(matrix, matrixSize);
 };
 
-const setSymbol = (isPlayerOne) => {
-    return isPlayerOne ? playerOneSymbol : playerTwoSymbol;
+const setSymbol = isPlayerOne => {
+	return isPlayerOne ? playerOneSymbol : playerTwoSymbol;
 };
 
 const fillMatrix = (x, y, btnContent) => {
-    matrix[x][y] = btnContent;
+	matrix[x][y] = btnContent;
 };
 
+const playMove = event => {
+	const symbol = setSymbol(isPlayerOne);
+	const btn = event.target;
 
-const playMove = (event) => {
-    const symbol = setSymbol(isPlayerOne);
-    const btn = event.target;
+	btn.textContent = symbol;
+	btn.setAttribute('disabled', 'disabled');
 
-    btn.textContent = symbol;
-    btn.setAttribute('disabled', 'disabled');
-     
-    const x = btn.getAttribute('data-pos-x');
-    const y = btn.getAttribute('data-pos-y');
-    const btnContent = btn.textContent;
+	const x = btn.getAttribute('data-pos-x');
+	const y = btn.getAttribute('data-pos-y');
+	const btnContent = btn.textContent;
 
-    fillMatrix(x,y, btnContent);
+	fillMatrix(x, y, btnContent);
 
-    const player = isPlayerOne;
-    if(checkWin(matrix, btnContent)) {
-        setTimeout(() => {
-            confirm(`Player ${player ? 'one' : 'two'} wins! New game?`) ? startGame(): null;
-        }, 100);
-    }
-    
-    isPlayerOne = !isPlayerOne;
-    
+	const player = isPlayerOne;
+	if (checkWin(matrix, btnContent)) {
+		setTimeout(() => {
+			confirm(`Player ${player ? 'one' : 'two'} wins! New game?`)
+				? startGame()
+				: null;
+		}, 100);
+	}
+
+	isPlayerOne = !isPlayerOne;
 };
 
 const App = () => {
-    startGame();   
-    [...buttons].map((button) => {
-        button.addEventListener('click', playMove);
-    });
-}
+	startGame();
+	[...buttons].map(button => {
+		button.addEventListener('click', playMove);
+	});
+};
 
 export default App;
-
-
-
-
