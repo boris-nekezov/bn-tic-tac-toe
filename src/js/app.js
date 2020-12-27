@@ -92,15 +92,6 @@ const App = () => {
 	[...buttons].map(button => {
 		button.addEventListener('click', playMove);
 	});
-
-	// todo remove later
-	// document.querySelector('.win-line').classList.add('win-line--win-row-2');
-	// setTimeout(() => {
-	// 	console.log('add active');
-	// 	document
-	// 		.querySelector('.win-line')
-	// 		.classList.add('win-line--win-row-2-active');
-	// }, 1000);
 };
 
 export default App;

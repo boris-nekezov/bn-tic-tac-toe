@@ -1,15 +1,56 @@
+// delay for the active class
+const delay = 300;
+// win line div class name
+const winLineClassName = 'win-line';
+
+// row type of win classes
+const winRowName = `${winLineClassName}--win-row`;
+// row 1
+const winRow1ClassName = `${winRowName}-1`;
+const winRow1ClassNameActive = `${winRow1ClassName}-active`;
+// row 2
+const winRow2ClassName = `${winRowName}-2`;
+const winRow2ClassNameActive = `${winRow2ClassName}-active`;
+// row 3
+const winRow3ClassName = `${winRowName}-3`;
+const winRow3ClassNameActive = `${winRow3ClassName}-active`;
+
+// column type of win classes
+const winColName = `${winLineClassName}--win-col`;
+// col 1
+const winCol1ClassName = `${winColName}-1`;
+const winCol1ClassNameActive = `${winCol1ClassName}-active`;
+// col 2
+const winCol2ClassName = `${winColName}-2`;
+const winCol2ClassNameActive = `${winCol2ClassName}-active`;
+// col 3
+const winCol3ClassName = `${winColName}-3`;
+const winCol3ClassNameActive = `${winCol3ClassName}-active`;
+
+// diagonal type of win classes
+const winDiagName = `${winLineClassName}--win-diag`;
+// diag 1
+const winDiag1ClassName = `${winDiagName}-1`;
+const winDiag1ClassNameActive = `${winDiag1ClassName}-active`;
+// diag 2
+const winDiag2ClassName = `${winDiagName}-2`;
+const winDiag2ClassNameActive = `${winDiag2ClassName}-active`;
+
+const winLineClassSelector = `.${winLineClassName}`;
+// const winLineRow;
+const winLine = document.querySelector(winLineClassSelector);
+
+// add first modifier class with basic styles for that type of win
+// then add another active class after the delay to perform animation
+const handleClasses = (className, classNameActive) => {
+	winLine.classList.add(className);
+	setTimeout(() => {
+		console.log('add active');
+		winLine.classList.add(classNameActive);
+	}, delay);
+};
+
 const checkWin = (matrix, btnContent) => {
-	const delay = 300;
-	const winLineClassName = 'win-line';
-	const winRowName = `${winLineClassName}--win-row`;
-	const winRow1ClassName = `${winRowName}-1`;
-	const winRow1ClassNameActive = `${winRow1ClassName}-active`;
-	const winRow2ClassName = `${winRowName}-2`;
-	const winRow2ClassNameActive = `${winRow2ClassName}-active`;
-	const winRowName3 = `${winRowName}-3`;
-	const winLineClassSelector = `.${winLineClassName}`;
-	// const winLineRow;
-	const winLine = document.querySelector(winLineClassSelector);
 	console.log(`[CHECK WIN]`);
 
 	// row wins
@@ -66,66 +107,41 @@ const checkWin = (matrix, btnContent) => {
 			? true
 			: false;
 
-	// todo make this whole if a function that is called in switch statement
-	// row wins
-	// row 1 wins
+	// row type of wins
 	if (isRow1Win) {
-		console.log('[Row1Win]');
-		winLine.classList.add(winRow1ClassName);
-		setTimeout(() => {
-			console.log('add active');
-			winLine.classList.add(winRow1ClassNameActive);
-		}, delay);
+		handleClasses(winRow1ClassName, winRow1ClassNameActive);
 		return true;
 	}
-	// row 2 wins
 	if (isRow2Win) {
-		console.log('[Row2Win]');
-		winLine.classList.add(winRow2ClassName);
-		setTimeout(() => {
-			console.log('add active');
-			winLine.classList.add(winRow2ClassNameActive);
-		}, delay);
-		return true;
-	}
-
-	if (isRow2Win) {
-		console.log('[Row2Win]');
-		winLine.classList.add('win-line--win-row-2', 'win-line--active');
+		handleClasses(winRow2ClassName, winRow2ClassNameActive);
 		return true;
 	}
 	if (isRow3Win) {
-		console.log('[Row3Win]');
-		winLine.classList.add('win-line--win-row-3', 'win-line--active');
+		handleClasses(winRow3ClassName, winRow3ClassNameActive);
 		return true;
 	}
 
-	// column wins
+	// column type of wins
 	if (isCol1Win) {
-		console.log('[Col1Win]');
-		winLine.classList.add('win-line--win-col-1', 'win-line--active');
+		handleClasses(winCol1ClassName, winCol1ClassNameActive);
 		return true;
 	}
 	if (isCol2Win) {
-		console.log('[Col2Win]');
-		winLine.classList.add('win-line--win-col-2', 'win-line--active');
+		handleClasses(winCol2ClassName, winCol2ClassNameActive);
 		return true;
 	}
 	if (isCol3Win) {
-		console.log('[Col3Win]');
-		winLine.classList.add('win-line--win-col-3', 'win-line--active');
+		handleClasses(winCol3ClassName, winCol3ClassNameActive);
 		return true;
 	}
 
-	//diagonal wins
+	// diagonal type of wins
 	if (isDiag1Win) {
-		console.log('[Diag1Win]');
-		winLine.classList.add('win-line--win-diag-1', 'win-line--active');
+		handleClasses(winDiag1ClassName, winDiag1ClassNameActive);
 		return true;
 	}
 	if (isDiag2Win) {
-		console.log('[Diag2Win]');
-		winLine.classList.add('win-line--win-diag-2', 'win-line--active');
+		handleClasses(winDiag2ClassName, winDiag2ClassNameActive);
 		return true;
 	}
 };
