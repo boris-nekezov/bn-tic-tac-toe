@@ -26,8 +26,7 @@ const startGame = () => {
 	resetMatrix(matrix);
 	resetButtons(buttons);
 	// reset the class of winline
-	document.querySelector('.tic-tac-toe__win-line').className =
-		'tic-tac-toe__win-line';
+	document.querySelector('.win-line').className = 'win-line';
 	// create matrix once
 	if (!isMatrixCreated) {
 		createMatrix(matrix, matrixSize);
@@ -66,7 +65,7 @@ const playMove = event => {
 			confirm(`Player ${player ? 'one' : 'two'} wins! New game?`)
 				? startGame()
 				: null;
-		}, 250);
+		}, 1000);
 	} else {
 		// no winner case when every button is clicked but there is no match
 		let nowWinStack = 0;

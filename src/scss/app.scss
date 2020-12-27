@@ -1,6 +1,7 @@
 @import './src/variables.scss';
 @import './src/bootstrap-overrides.scss';
 @import './src/general.scss';
+@import './src/win-line.scss';
 
 .tic-tac-toe {
 	margin-top: 20px;
@@ -25,65 +26,6 @@
 
 .tic-tac-toe__button {
 	text-shadow: $shadow;
-}
-
-.tic-tac-toe__win-line {
-	position: absolute;
-	width: 0;
-	height: 8px;
-	opacity: 0;
-	background: $color-white;
-	box-shadow: $box-shadow;
-}
-
-.tic-tac-toe__win-line--active {
-	width: 90%;
-	opacity: 1;
-	background: $color-white;
-}
-
-.tic-tac-toe__win-line--win-row-1 {
-	top: 15%;
-	left: 5%;
-}
-
-.tic-tac-toe__win-line--win-row-2 {
-	top: 48%;
-	left: 5%;
-}
-
-.tic-tac-toe__win-line--win-row-3 {
-	top: 82%;
-	left: 5%;
-}
-
-.tic-tac-toe__win-line--win-col-1,
-.tic-tac-toe__win-line--win-col-2,
-.tic-tac-toe__win-line--win-col-3 {
-	top: 48%;
-	transform: rotate(90deg);
-}
-.tic-tac-toe__win-line--win-col-1 {
-	right: 38%;
-}
-.tic-tac-toe__win-line--win-col-2 {
-	right: 5%;
-}
-.tic-tac-toe__win-line--win-col-3 {
-	left: 38%;
-}
-
-.tic-tac-toe__win-line--win-diag-1 {
-	top: 48%;
-	left: -16%;
-	width: 130%;
-	transform: rotate(45deg);
-}
-.tic-tac-toe__win-line--win-diag-2 {
-	top: 48%;
-	left: -16%;
-	width: 130%;
-	transform: rotate(135deg);
 }
 
 .tic-tac-toe__button {

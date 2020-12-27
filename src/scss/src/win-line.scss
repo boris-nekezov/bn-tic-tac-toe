@@ -1,0 +1,96 @@
+.win-line {
+	position: absolute;
+	opacity: 0;
+	background: $color-white;
+	transition: width $durr, height $durr, opacity $durr;
+}
+
+.win-line--win-row-1,
+.win-line--win-row-2,
+.win-line--win-row-3 {
+	width: 0;
+	height: 8px;
+	left: 5%;
+	background-color: $color-white;
+}
+.win-line--win-row-1-active,
+.win-line--win-row-2-active,
+.win-line--win-row-3-active {
+	width: 90%;
+	box-shadow: $box-shadow;
+	opacity: 1;
+}
+// win roll 1
+.win-line--win-row-1 {
+	top: 15%;
+}
+
+// win row 2
+.win-line--win-row-2 {
+	top: 48%;
+}
+
+// win row 3
+.win-line--win-row-3 {
+	top: 82%;
+}
+
+// column type of wins classes
+.win-line--win-col-1,
+.win-line--win-col-2,
+.win-line--win-col-3 {
+	width: 8px;
+	height: 0;
+	top: 5%;
+	background-color: $color-white;
+}
+.win-line--win-col-1-active,
+.win-line--win-col-2-active,
+.win-line--win-col-3-active {
+	height: 90%;
+	box-shadow: $box-shadow;
+	opacity: 1;
+}
+
+// win col 1
+.win-line--win-col-1 {
+	left: 16%;
+}
+
+// win col 2
+.win-line--win-col-2 {
+	left: 48%;
+}
+
+// win col 3
+.win-line--win-col-3 {
+	left: 82%;
+}
+
+// diagonal type of wins classes
+.win-line--win-diag-1,
+.win-line--win-diag-2 {
+	width: 8px;
+	height: 0;
+	top: 7%;
+	background-color: $color-white;
+	transform-origin: top left;
+}
+.win-line--win-diag-1-active,
+.win-line--win-diag-2-active {
+	height: 120%;
+	box-shadow: $box-shadow;
+	opacity: 1;
+}
+
+// win col 1
+.win-line--win-diag-1 {
+	left: 6%;
+	transform: rotate(-45deg);
+}
+
+// win col 2
+.win-line--win-diag-2 {
+	left: 92%;
+	transform: rotate(45deg);
+}
