@@ -17,6 +17,9 @@ let {
 	matrixSize,
 	playerOneSymbol,
 	playerTwoSymbol,
+	playgroundOverlay,
+	overlayActiveClass,
+	durration,
 } = SETTINGS;
 let isMatrixCreated = false;
 
@@ -27,6 +30,8 @@ const startGame = () => {
 	resetButtons(buttons);
 	// reset the class of winline
 	document.querySelector('.win-line').className = 'win-line';
+	// remove overlay active class
+	playgroundOverlay.classList.remove(overlayActiveClass);
 	// create matrix once
 	if (!isMatrixCreated) {
 		createMatrix(matrix, matrixSize);
@@ -39,8 +44,6 @@ const setSymbol = isPlayerOne => {
 };
 
 const fillMatrix = (x, y, btnContent) => {
-	console.log('matrix', matrix);
-	console.log('x, y, btnContent', x, y, btnContent);
 	matrix[x][y] = btnContent;
 };
 
@@ -62,10 +65,9 @@ const playMove = event => {
 	if (checkWin(matrix, btnContent)) {
 		// win case confirm new game
 		setTimeout(() => {
-			confirm(`Player ${player ? 'one' : 'two'} wins! New game?`)
-				? startGame()
-				: null;
-		}, 1000);
+			alert(`Player ${player ? 'one' : 'two'} wins!`);
+			startGame();
+		}, durration * 2);
 	} else {
 		// no winner case when every button is clicked but there is no match
 		let nowWinStack = 0;
@@ -80,7 +82,7 @@ const playMove = event => {
 			setTimeout(() => {
 				alert('No more moves! Tie!');
 				startGame();
-			}, 250);
+			}, durration);
 		}
 	}
 
