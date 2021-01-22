@@ -1,7 +1,3 @@
-/** NOTES:
- * * implement facade pattern to create only one class
- * * WinType instead of multiple different classes
- */
 import SETTINGS from '../SETTINGS';
 import addPlaygroundOverlay from './addPlaygroundOverlay';
 import addWinClasses from './addWinClasses';
@@ -97,84 +93,57 @@ const checkWin = (matrix, btnContent) => {
 			? true
 			: false;
 
-	let isThereAWinner = false;
-
-	class WinType {
-		constructor(testCondition, winClass, winClassActive, message) {
-			this.testCondition = testCondition;
-			this.winClass = winClass;
-			this.winClassActive = winClassActive;
-			this.message = message;
-		}
-		logMessage() {
-			console.log(`[${this.message}!]`);
-		}
+	// row type of wins
+	if (isRow1Win) {
+		addWinClasses(winRow1ClassName, winRow1ClassNameActive);
+		addPlaygroundOverlay();
+		return true;
+	}
+	if (isRow2Win) {
+		addWinClasses(winRow2ClassName, winRow2ClassNameActive);
+		addPlaygroundOverlay();
+		return true;
+	}
+	if (isRow3Win) {
+		addWinClasses(winRow3ClassName, winRow3ClassNameActive);
+		addPlaygroundOverlay();
+		return true;
 	}
 
-	function openCloseCheckWin(winTypes) {
-		console.log('openCloseCheckWin');
-		winTypes.some(winType => {
-			if (winType.testCondition) {
-				addWinClasses(winType.winClass, winType.winClassActive);
-				addPlaygroundOverlay();
-				winType.logMessage();
-				isThereAWinner = true;
-			}
-		});
+	// column type of wins
+	if (isCol1Win) {
+		addWinClasses(winCol1ClassName, winCol1ClassNameActive);
+		addPlaygroundOverlay();
+		return true;
+	}
+	if (isCol2Win) {
+		addWinClasses(winCol2ClassName, winCol2ClassNameActive);
+		addPlaygroundOverlay();
+		return true;
+	}
+	if (isCol3Win) {
+		addWinClasses(winCol3ClassName, winCol3ClassNameActive);
+		addPlaygroundOverlay();
+		return true;
 	}
 
-	openCloseCheckWin([
-		new WinType(
-			isRow1Win,
-			winRow1ClassName,
-			winRow1ClassNameActive,
-			'ROW 1 WIN'
-		),
-		new WinType(
-			isRow2Win,
-			winRow2ClassName,
-			winRow2ClassNameActive,
-			'ROW 2 WIN'
-		),
-		new WinType(
-			isRow3Win,
-			winRow3ClassName,
-			winRow3ClassNameActive,
-			'ROW 3 WIN'
-		),
-		new WinType(
-			isCol1Win,
-			winCol1ClassName,
-			winCol1ClassNameActive,
-			'COL 1 WIN'
-		),
-		new WinType(
-			isCol2Win,
-			winCol2ClassName,
-			winCol2ClassNameActive,
-			'COL 2 WIN'
-		),
-		new WinType(
-			isCol3Win,
-			winCol3ClassName,
-			winCol3ClassNameActive,
-			'COL 3 WIN'
-		),
-		new WinType(
-			isDiag1Win,
-			winDiag1ClassName,
-			winDiag1ClassNameActive,
-			'DIAG 1 WIN'
-		),
-		new WinType(
-			isDiag2Win,
-			winDiag2ClassName,
-			winDiag2ClassNameActive,
-			'DIAG 2 WIN'
-		),
-	]);
+	// diagonal type of wins
+	if (isDiag1Win) {
+		addWinClasses(winDiag1ClassName, winDiag1ClassNameActive);
+		addPlaygroundOverlay();
+		return true;
+	}
+	if (isDiag2Win) {
+		addWinClasses(winDiag2ClassName, winDiag2ClassNameActive);
+		addPlaygroundOverlay();
+		return true;
+	}
 
-	return isThereAWinner;
+	if (isRow1Win) {
+		addWinClasses(winRow1ClassName, winRow1ClassNameActive);
+		addPlaygroundOverlay();
+		return true;
+	}
 };
 
 export default checkWin;

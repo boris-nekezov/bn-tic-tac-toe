@@ -1,6 +1,7 @@
 /** NOTES:
- * * implement facade pattern to create only one class
- * * WinType instead of multiple different classes
+ * * implement open-close principle to remove the huge number of if statements for checking win
+ * * create a class for every win type
+ * * remove multiple ifs
  */
 import SETTINGS from '../SETTINGS';
 import addPlaygroundOverlay from './addPlaygroundOverlay';
@@ -100,14 +101,94 @@ const checkWin = (matrix, btnContent) => {
 	let isThereAWinner = false;
 
 	class WinType {
-		constructor(testCondition, winClass, winClassActive, message) {
+		constructor() {}
+	}
+
+	class Row1Win {
+		constructor(testCondition) {
 			this.testCondition = testCondition;
-			this.winClass = winClass;
-			this.winClassActive = winClassActive;
-			this.message = message;
+			this.winClass = winRow1ClassName;
+			this.winClassActive = winRow1ClassNameActive;
 		}
 		logMessage() {
-			console.log(`[${this.message}!]`);
+			console.log('[ROW 1 WIN!]');
+		}
+	}
+
+	class Row2Win {
+		constructor(testCondition) {
+			this.testCondition = testCondition;
+			this.winClass = winRow2ClassName;
+			this.winClassActive = winRow2ClassNameActive;
+		}
+		logMessage() {
+			console.log('[ROW 2 WIN!]');
+		}
+	}
+
+	class Row3Win {
+		constructor(testCondition) {
+			this.testCondition = testCondition;
+			this.winClass = winRow3ClassName;
+			this.winClassActive = winRow3ClassNameActive;
+		}
+		logMessage() {
+			console.log('[ROW 3 WIN!]');
+		}
+	}
+
+	class Col1Win {
+		constructor(testCondition) {
+			this.testCondition = testCondition;
+			this.winClass = winCol1ClassName;
+			this.winClassActive = winCol1ClassNameActive;
+		}
+		logMessage() {
+			console.log('[COL 1 WIN!]');
+		}
+	}
+
+	class Col2Win {
+		constructor(testCondition) {
+			this.testCondition = testCondition;
+			this.winClass = winCol2ClassName;
+			this.winClassActive = winCol2ClassNameActive;
+		}
+		logMessage() {
+			console.log('[COL 2 WIN!]');
+		}
+	}
+
+	class Col3Win {
+		constructor(testCondition) {
+			this.testCondition = testCondition;
+			this.winClass = winCol3ClassName;
+			this.winClassActive = winCol3ClassNameActive;
+		}
+		logMessage() {
+			console.log('[COL 3 WIN!]');
+		}
+	}
+
+	class Diag1Win {
+		constructor(testCondition) {
+			this.testCondition = testCondition;
+			this.winClass = winDiag1ClassName;
+			this.winClassActive = winDiag1ClassNameActive;
+		}
+		logMessage() {
+			console.log('[DIAG 1 WIN!]');
+		}
+	}
+
+	class Diag2Win {
+		constructor(testCondition) {
+			this.testCondition = testCondition;
+			this.winClass = winDiag2ClassName;
+			this.winClassActive = winDiag2ClassNameActive;
+		}
+		logMessage() {
+			console.log('[DIAG 2 WIN!]');
 		}
 	}
 
@@ -124,54 +205,14 @@ const checkWin = (matrix, btnContent) => {
 	}
 
 	openCloseCheckWin([
-		new WinType(
-			isRow1Win,
-			winRow1ClassName,
-			winRow1ClassNameActive,
-			'ROW 1 WIN'
-		),
-		new WinType(
-			isRow2Win,
-			winRow2ClassName,
-			winRow2ClassNameActive,
-			'ROW 2 WIN'
-		),
-		new WinType(
-			isRow3Win,
-			winRow3ClassName,
-			winRow3ClassNameActive,
-			'ROW 3 WIN'
-		),
-		new WinType(
-			isCol1Win,
-			winCol1ClassName,
-			winCol1ClassNameActive,
-			'COL 1 WIN'
-		),
-		new WinType(
-			isCol2Win,
-			winCol2ClassName,
-			winCol2ClassNameActive,
-			'COL 2 WIN'
-		),
-		new WinType(
-			isCol3Win,
-			winCol3ClassName,
-			winCol3ClassNameActive,
-			'COL 3 WIN'
-		),
-		new WinType(
-			isDiag1Win,
-			winDiag1ClassName,
-			winDiag1ClassNameActive,
-			'DIAG 1 WIN'
-		),
-		new WinType(
-			isDiag2Win,
-			winDiag2ClassName,
-			winDiag2ClassNameActive,
-			'DIAG 2 WIN'
-		),
+		new Row1Win(isRow1Win),
+		new Row2Win(isRow2Win),
+		new Row3Win(isRow3Win),
+		new Col1Win(isCol1Win),
+		new Col2Win(isCol2Win),
+		new Col3Win(isCol3Win),
+		new Diag1Win(isDiag1Win),
+		new Diag2Win(isDiag2Win),
 	]);
 
 	return isThereAWinner;
