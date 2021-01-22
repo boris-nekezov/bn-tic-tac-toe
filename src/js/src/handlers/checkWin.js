@@ -1,10 +1,7 @@
 import SETTINGS from '../SETTINGS';
-let { playgroundOverlay, overlayActiveClass, durration } = SETTINGS;
-
-// win line div class name
-const winLineClassName = 'win-line';
-const winLineClassSelector = `.${winLineClassName}`;
-const winLine = document.querySelector(winLineClassSelector);
+import addPlaygroundOverlay from './addPlaygroundOverlay';
+import addWinClasses from './addWinClasses';
+let { winLineClassName } = SETTINGS;
 
 // row type of win classes
 const winRowName = `${winLineClassName}--win-row`;
@@ -38,21 +35,6 @@ const winDiag1ClassNameActive = `${winDiag1ClassName}-active`;
 // diag 2
 const winDiag2ClassName = `${winDiagName}-2`;
 const winDiag2ClassNameActive = `${winDiag2ClassName}-active`;
-
-// add first modifier class with basic styles for that type of win
-// then add another active class after the delay to perform animation
-const handleClasses = (className, classNameActive) => {
-	winLine.classList.add(className);
-	setTimeout(() => {
-		console.log('add active');
-		winLine.classList.add(classNameActive);
-	}, durration);
-};
-
-const addPlaygroundOverlay = () => {
-	playgroundOverlay.classList.add(overlayActiveClass);
-	console.log('[add overlay playground]');
-};
 
 const checkWin = (matrix, btnContent) => {
 	console.log(`[CHECK WIN]`);
@@ -113,46 +95,46 @@ const checkWin = (matrix, btnContent) => {
 
 	// row type of wins
 	if (isRow1Win) {
-		handleClasses(winRow1ClassName, winRow1ClassNameActive);
+		addWinClasses(winRow1ClassName, winRow1ClassNameActive);
 		addPlaygroundOverlay();
 		return true;
 	}
 	if (isRow2Win) {
-		handleClasses(winRow2ClassName, winRow2ClassNameActive);
+		addWinClasses(winRow2ClassName, winRow2ClassNameActive);
 		addPlaygroundOverlay();
 		return true;
 	}
 	if (isRow3Win) {
-		handleClasses(winRow3ClassName, winRow3ClassNameActive);
+		addWinClasses(winRow3ClassName, winRow3ClassNameActive);
 		addPlaygroundOverlay();
 		return true;
 	}
 
 	// column type of wins
 	if (isCol1Win) {
-		handleClasses(winCol1ClassName, winCol1ClassNameActive);
+		addWinClasses(winCol1ClassName, winCol1ClassNameActive);
 		addPlaygroundOverlay();
 		return true;
 	}
 	if (isCol2Win) {
-		handleClasses(winCol2ClassName, winCol2ClassNameActive);
+		addWinClasses(winCol2ClassName, winCol2ClassNameActive);
 		addPlaygroundOverlay();
 		return true;
 	}
 	if (isCol3Win) {
-		handleClasses(winCol3ClassName, winCol3ClassNameActive);
+		addWinClasses(winCol3ClassName, winCol3ClassNameActive);
 		addPlaygroundOverlay();
 		return true;
 	}
 
 	// diagonal type of wins
 	if (isDiag1Win) {
-		handleClasses(winDiag1ClassName, winDiag1ClassNameActive);
+		addWinClasses(winDiag1ClassName, winDiag1ClassNameActive);
 		addPlaygroundOverlay();
 		return true;
 	}
 	if (isDiag2Win) {
-		handleClasses(winDiag2ClassName, winDiag2ClassNameActive);
+		addWinClasses(winDiag2ClassName, winDiag2ClassNameActive);
 		addPlaygroundOverlay();
 		return true;
 	}
